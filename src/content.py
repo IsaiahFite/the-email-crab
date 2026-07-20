@@ -134,17 +134,59 @@ def pick_long_email(state: dict) -> str | None:
     return None
 
 
-def pick_subject(phrase: str | None = None) -> str:
-    """Pick a subject line, optionally referencing the phrase."""
+def extract_snippet(text: str, style: str) -> str:
+    """Extract a snippet from text for use in subject lines."""
+    # For long emails, just use first sentence
+    if len(text) > 100:
+        first_sentence = text.split(".")[0].split("?")[0].split("!")[0]
+        text = first_sentence.strip()
+
+    words = text.split()
+    if not words:
+        return ""
+
+    if style == "short":
+        return " ".join(words[:3])
+    elif style == "medium":
+        return " ".join(words[:5])
+    elif style == "trailing":
+        return " ".join(words[:4]) + "..."
+    elif style == "question":
+        # Pick a random word from first few and add ?
+        word = words[random.randint(0, min(2, len(words) - 1))]
+        # Clean punctuation
+        word = word.rstrip(".,!?;:")
+        return word.capitalize() + "?"
+    elif style == "about":
+        return "About " + " ".join(words[:2]).lower().rstrip(".,!?;:")
+    elif style == "thoughts":
+        return "Thoughts on " + words[0].lower().rstrip(".,!?;:")
+
+    return " ".join(words[:4])
+
+
+def pick_subject(content: str | None = None) -> str:
+    """Pick a subject line, optionally derived from content."""
     subjects = load_lines("subjects.txt")
     if not subjects:
         subjects = ["Hello", "Update", "FYI"]
 
-    # 20% chance to reference the phrase if we have one
-    if phrase and random.random() < 0.2:
-        # Take first few words
-        snippet = " ".join(phrase.split()[:4])
-        return f"Re: {snippet}"
+    # 35% chance to derive from content if we have it
+    if content and random.random() < 0.35:
+        style = random.choice([
+            "short", "medium", "trailing", "question", "about", "thoughts"
+        ])
+        snippet = extract_snippet(content, style)
+        if snippet:
+            # Sometimes wrap in a template
+            templates = [
+                "{snippet}",
+                "Re: {snippet}",
+                "Fwd: {snippet}",
+                "{snippet}",  # plain more likely
+            ]
+            template = random.choice(templates)
+            return template.format(snippet=snippet)
 
     return random.choice(subjects)
 
