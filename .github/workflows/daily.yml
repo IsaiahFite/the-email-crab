@@ -29,7 +29,7 @@ jobs:
       - name: Run email bot
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GOOGLE_APP_PASSWORD: ${{ secrets.GOOGLE_APP_PASSWORD }}
           RECIPIENTS: ${{ secrets.RECIPIENTS }}
         run: python -m src.main
 

@@ -27,7 +27,7 @@ def send_email(
         True if sent successfully, False otherwise
     """
     gmail_user = os.environ.get("GMAIL_USER")
-    gmail_password = os.environ.get("GMAIL_APP_PASSWORD")
+    gmail_password = os.environ.get("GOOGLE_APP_PASSWORD")
     sender_name = os.environ.get("SENDER_NAME", "Dad")
 
     if not gmail_user or not gmail_password:
@@ -35,7 +35,7 @@ def send_email(
             gmail_user = "test@example.com"
             gmail_password = "fake"
         else:
-            print("ERROR: GMAIL_USER and GMAIL_APP_PASSWORD must be set")
+            print("ERROR: GMAIL_USER and GOOGLE_APP_PASSWORD must be set")
             return False
 
     msg = MIMEMultipart("related")
@@ -87,7 +87,7 @@ def send_email(
         print(f"Email sent to {len(recipients)} recipient(s)")
         return True
     except smtplib.SMTPAuthenticationError:
-        print("ERROR: Gmail authentication failed. Check GMAIL_APP_PASSWORD.")
+        print("ERROR: Gmail authentication failed. Check GOOGLE_APP_PASSWORD.")
         return False
     except smtplib.SMTPException as e:
         print(f"ERROR: Failed to send email: {e}")
