@@ -1,0 +1,42 @@
+name: Daily Email Check
+
+on:
+  schedule:
+    - cron: '0 14 * * *'  # 2 PM UTC - adjust for dad's timezone
+  workflow_dispatch:  # Manual trigger for testing
+
+concurrency:
+  group: the-email-crab
+  cancel-in-progress: false
+
+jobs:
+  maybe-send:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run email bot
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
+        run: python -m src.main
+
+      - name: Commit state changes
+        run: |
+          git config user.name "the-email-crab"
+          git config user.email "bot@email-crab.local"
+          git add data/state.json
+          git diff --staged --quiet || git commit -m "Update state after send"
+          git push

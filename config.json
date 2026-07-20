@@ -1,0 +1,17 @@
+{
+  "sender_name": "Dad",
+  "content_weights": {
+    "phrase_only": 35,
+    "image_only": 25,
+    "phrase_and_image": 25,
+    "long_email": 15
+  },
+  "image_sources": {
+    "unsplash": 40,
+    "picsum": 20,
+    "random_duck": 15,
+    "cataas": 15,
+    "dog_ceo": 10
+  },
+  "unsplash_queries": ["crab", "abstract", "nature", "fog", "potato", "chair", "bird", "cloud", "stairs"]
+}

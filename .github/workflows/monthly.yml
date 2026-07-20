@@ -1,0 +1,40 @@
+name: Monthly Content Regeneration
+
+on:
+  schedule:
+    - cron: '0 12 1 * *'  # 1st of each month at noon UTC
+  workflow_dispatch:  # Manual trigger
+
+concurrency:
+  group: the-email-crab
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate new content
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/generate_phrases.py
+
+      - name: Commit new content
+        run: |
+          git config user.name "the-email-crab"
+          git config user.email "bot@email-crab.local"
+          git add data/phrases.txt data/long_emails.txt
+          git commit -m "Monthly content regeneration"
+          git push
