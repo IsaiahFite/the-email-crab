@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate absurdist phrases and long emails using Claude Haiku."""
+"""Generate absurdist phrases and long emails using Claude."""
 
 import os
 import sys
@@ -30,12 +30,16 @@ Rules:
 - No quotation marks around phrases"""
 
     response = client.messages.create(
-        model="claude-3-5-haiku-20241022",
+        model="claude-sonnet-5",
         max_tokens=2500,
         messages=[{"role": "user", "content": prompt}],
     )
 
-    return response.content[0].text
+    # Extract text from response (skip thinking blocks)
+    for block in response.content:
+        if hasattr(block, "text"):
+            return block.text
+    return ""
 
 
 def generate_long_emails(client: anthropic.Anthropic) -> str:
@@ -59,12 +63,16 @@ Rules:
 - Keep each email under 150 words"""
 
     response = client.messages.create(
-        model="claude-3-5-haiku-20241022",
+        model="claude-sonnet-5",
         max_tokens=4000,
         messages=[{"role": "user", "content": prompt}],
     )
 
-    return response.content[0].text
+    # Extract text from response (skip thinking blocks)
+    for block in response.content:
+        if hasattr(block, "text"):
+            return block.text
+    return ""
 
 
 def main() -> int:

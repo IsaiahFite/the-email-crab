@@ -2,7 +2,7 @@ name: Daily Email Check
 
 on:
   schedule:
-    - cron: '0 14 * * *'  # 2 PM UTC - adjust for dad's timezone
+    - cron: '0 19 * * *'  # 7 PM UTC - adjusted for dad's timezone
   workflow_dispatch:  # Manual trigger for testing
 
 concurrency:
