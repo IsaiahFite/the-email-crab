@@ -28,7 +28,6 @@ def send_email(
     """
     gmail_user = os.environ.get("GMAIL_USER")
     gmail_password = os.environ.get("GOOGLE_APP_PASSWORD")
-    sender_name = os.environ.get("SENDER_NAME", "Dad")
 
     if not gmail_user or not gmail_password:
         if dry_run:
@@ -40,7 +39,7 @@ def send_email(
 
     msg = MIMEMultipart("related")
     msg["Subject"] = subject
-    msg["From"] = f"{sender_name} <{gmail_user}>"
+    msg["From"] = gmail_user
     msg["To"] = ", ".join(recipients)
 
     # Create alternative container for text/html
