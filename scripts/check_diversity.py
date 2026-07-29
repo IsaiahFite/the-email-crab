@@ -21,17 +21,33 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 OPENER_WARN_SHARE = 0.15
 QUESTION_WARN_SHARE = 0.10
 
-# Only forms detectable by exact string tests are reported. Sentence fragments
-# would need real part-of-speech tagging to count: a word-list verb detector
-# scores any unlisted verb as a fragment, which put the rate near 60% on a
-# batch that had almost none. A wrong number is worse than a missing one.
-IMPERATIVE_STARTS = {
-    "do", "don't", "never", "always", "stop", "remember", "consider", "avoid",
-    "count", "apologize", "return", "keep", "check", "ask", "tell", "watch",
-    "leave", "take", "put", "hold", "listen", "look", "try", "let", "make",
-    "give", "find", "bring", "call", "write", "read", "open", "close", "turn",
-    "walk", "wait", "trust", "assume", "report", "file", "submit", "consult",
-    "refer", "note", "beware", "mind", "please", "stay", "step", "begin",
+# Questions and second-person are exact string tests. Imperatives are not
+# decidable without part-of-speech tagging, so they are approximated and
+# labelled as such; sentence fragments are not reported at all.
+#
+# The approximation: a phrase opening with a word outside the closed classes
+# below, followed by a determiner or preposition, is a bare verb in command
+# position ("Bury the extension cord") rather than a plural subject with a
+# finite verb ("Doorstops hold the only real elections"). Only closed-class
+# words are enumerated here because those sets are finite and stable across
+# batches; listing verbs instead scored 6 imperatives in a batch that had 15.
+#
+# Known error: noun-plus-prepositional-phrase fragments ("Mustard on the
+# ledger, again") match the same shape and inflate the count by a couple.
+NON_INITIAL = re.compile(
+    r"^(the|a|an|every|all|some|most|no|my|your|his|her|their|our|its|i|you|he|"
+    r"she|it|we|they|this|that|these|those|there|here|if|when|what|why|who|how|"
+    r"where|in|on|at|for|by|with|from|under|over|between|after|before|inside|"
+    r"just|nothing|someone|somebody|something|somewhere|anyone|everyone|nobody|"
+    r"one|two|three|four|five|six|seven|eight|nine|ten|forty|roughly|several|"
+    r"warning|step|see)$",
+    re.IGNORECASE,
+)
+
+DETERMINERS_AND_PREPS = {
+    "the", "a", "an", "your", "its", "this", "that", "every", "all", "to",
+    "for", "with", "over", "into", "through", "on", "at", "in", "up", "down",
+    "out", "off", "toward", "against", "beneath", "beside", "around",
 }
 
 
@@ -49,6 +65,16 @@ def load_lines(filename: str) -> list[str]:
 
 def opener(text: str, words: int = 2) -> str:
     return " ".join(text.split()[:words]).rstrip(".,!?;:").lower()
+
+
+def looks_imperative(phrase: str) -> bool:
+    """Approximate: see the note on NON_INITIAL for what this can and can't see."""
+    if phrase.endswith("?"):
+        return False
+    words = [w.strip(",.;:").lower() for w in phrase.split()]
+    if len(words) < 2 or NON_INITIAL.match(words[0]):
+        return False
+    return words[1] in DETERMINERS_AND_PREPS
 
 
 def report_phrases() -> None:
@@ -72,15 +98,13 @@ def report_phrases() -> None:
 
     questions = sum(1 for p in phrases if p.endswith("?"))
     second = sum(1 for p in phrases if re.search(r"\byou(r|rs)?\b", p, re.I))
-    imperative = sum(
-        1 for p in phrases if p.split()[0].rstrip(",.").lower() in IMPERATIVE_STARTS
-    )
+    imperative = sum(1 for p in phrases if looks_imperative(p))
 
     print("  form coverage (categories overlap):")
     for label, n in [
         ("questions", questions),
         ("second person", second),
-        ("imperatives", imperative),
+        ("imperatives ~", imperative),
     ]:
         print(f"    {label:15} {n:3}  {100 * n / total:5.1f}%")
 
