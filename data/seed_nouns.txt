@@ -1,0 +1,330 @@
+# Seed subjects injected into the monthly generation prompt, sampled randomly
+# each run. This is the external randomness source: current Claude models reject
+# temperature/top_p, and the prompt is otherwise byte-identical month to month,
+# so without these the model re-converges on the same handful of subjects.
+#
+# Keep these mundane and mostly inanimate. The model reaches for wise-animal
+# aphorisms unprompted; a seed list heavy on animals reinforces that attractor
+# instead of breaking it. Animals are deliberately a small minority here.
+
+# household
+doorknob
+toaster
+spatula
+tupperware
+colander
+dishrag
+oven mitt
+ice tray
+bottle cap
+coat hanger
+lampshade
+doormat
+curtain rod
+light switch
+ceiling fan
+radiator
+thermostat
+smoke detector
+extension cord
+power strip
+junk drawer
+breadbox
+cutting board
+dish rack
+sponge
+broom
+dustpan
+laundry hamper
+lint trap
+dryer sheet
+clothespin
+ironing board
+mothball
+shoe rack
+umbrella stand
+mailbox
+doorstop
+keychain
+coaster
+placemat
+
+# office and stationery
+paperclip
+stapler
+rubber band
+thumbtack
+binder clip
+three-ring binder
+manila folder
+sticky note
+highlighter
+whiteboard
+dry erase marker
+hole punch
+letter opener
+envelope
+postage stamp
+filing cabinet
+desk lamp
+mouse pad
+keyboard
+monitor stand
+printer
+toner cartridge
+paper shredder
+calculator
+ruler
+protractor
+eraser
+pencil sharpener
+index card
+laminator
+
+# kitchen and food
+cereal
+toast
+margarine
+ketchup packet
+mustard
+pickle jar
+mayonnaise
+oatmeal
+instant coffee
+tea bag
+sugar cube
+salt shaker
+pepper grinder
+olive oil
+vinegar
+baking soda
+flour
+breadcrumb
+leftovers
+ice cube
+freezer burn
+casserole
+meatloaf
+gravy
+coleslaw
+potato salad
+canned soup
+ramen
+granola bar
+expired yogurt
+
+# bathroom
+toothbrush
+dental floss
+shower curtain
+bath mat
+soap dish
+shampoo bottle
+razor
+tweezers
+nail clipper
+cotton swab
+bandaid
+medicine cabinet
+toilet paper roll
+hand towel
+bathroom scale
+hairbrush
+deodorant
+lotion
+shower drain
+fogged mirror
+
+# streets and buildings
+escalator
+elevator
+revolving door
+turnstile
+parking meter
+fire hydrant
+manhole cover
+speed bump
+crosswalk
+traffic cone
+streetlight
+bus stop
+park bench
+storm drain
+sidewalk crack
+guardrail
+overpass
+cul-de-sac
+roundabout
+toll booth
+vending machine
+ATM
+payphone
+dumpster
+loading dock
+stairwell
+hallway
+lobby
+waiting room
+cubicle
+break room
+parking garage
+laundromat
+self-checkout
+fire escape
+emergency exit
+drop ceiling
+water fountain
+revolving rack
+coat check
+
+# tools and yard
+screwdriver
+wrench
+pliers
+tape measure
+spirit level
+stud finder
+drill bit
+sandpaper
+duct tape
+extension ladder
+wheelbarrow
+garden hose
+sprinkler
+rake
+lawnmower
+leaf blower
+snow shovel
+watering can
+flower pot
+trellis
+birdbath
+wind chime
+garden gnome
+compost bin
+gutter
+
+# clothing
+sock
+shoelace
+belt loop
+zipper
+button
+velcro
+drawstring
+pocket lint
+name tag
+lanyard
+wristwatch
+reading glasses
+hair tie
+safety pin
+cardigan
+bathrobe
+slippers
+mitten
+scarf
+raincoat
+
+# odds and ends
+picture frame
+throw pillow
+ottoman
+bookend
+magazine rack
+coat rack
+shoehorn
+piggy bank
+snow globe
+refrigerator magnet
+jigsaw puzzle
+deck of cards
+dice
+board game
+yo-yo
+rubber duck
+bubble wrap
+packing peanut
+cardboard box
+twist tie
+zip tie
+spare key
+loose change
+tangled charger
+dead battery
+
+# paperwork and procedure
+receipt
+warranty
+instruction manual
+terms of service
+punch card
+appointment
+reminder
+waiting list
+parking ticket
+jury duty
+tax form
+permission slip
+hall pass
+name badge
+membership card
+loyalty card
+expiration date
+fine print
+footnote
+disclaimer
+form letter
+group email
+meeting invite
+out-of-office reply
+spreadsheet
+pie chart
+org chart
+flow chart
+agenda
+meeting minutes
+suggestion box
+comment card
+survey
+questionnaire
+waiver
+
+# weather and outdoor grime
+puddle
+fog
+drizzle
+humidity
+static electricity
+dust
+cobweb
+mildew
+moss
+dandelion
+weeds
+gravel
+mud
+frost
+sleet
+tap water
+condensation
+draft
+echo
+shadow
+
+# a few animals, deliberately unmajestic
+pigeon
+squirrel
+moth
+ant
+silverfish
+goldfish
+hamster
+parakeet
+earthworm
+snail
+ladybug
+housefly
+raccoon
+seagull
+sparrow

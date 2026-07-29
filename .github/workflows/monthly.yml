@@ -31,6 +31,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/generate_phrases.py
 
+      - name: Report content diversity
+        run: python scripts/check_diversity.py
+
       - name: Commit new content
         run: |
           git config user.name "the-email-crab"
