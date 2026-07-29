@@ -221,15 +221,15 @@ def generate_email_content(
 
     elif content_type == "image_only":
         image_sources = config.get("image_sources", {"unsplash": 100})
-        unsplash_queries = config.get("unsplash_queries", ["crab"])
-        image_bytes = images.get_random_image(image_sources, unsplash_queries)
+        image_queries = config.get("image_queries", ["crab"])
+        image_bytes = images.get_random_image(image_sources, image_queries)
 
     elif content_type == "phrase_and_image":
         phrase = pick_phrase(state)
         content_to_track = phrase
         image_sources = config.get("image_sources", {"unsplash": 100})
-        unsplash_queries = config.get("unsplash_queries", ["crab"])
-        image_bytes = images.get_random_image(image_sources, unsplash_queries)
+        image_queries = config.get("image_queries", ["crab"])
+        image_bytes = images.get_random_image(image_sources, image_queries)
 
     elif content_type == "long_email":
         long_email = pick_long_email(state)

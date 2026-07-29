@@ -1,16 +1,17 @@
 {
   "content_weights": {
-    "phrase_only": 35,
-    "image_only": 25,
-    "phrase_and_image": 25,
-    "long_email": 15
+    "phrase_only": 10,
+    "image_only": 15,
+    "phrase_and_image": 40,
+    "long_email": 35
   },
   "image_sources": {
-    "unsplash": 40,
+    "unsplash": 30,
+    "loremflickr": 30,
     "picsum": 20,
-    "random_duck": 15,
-    "cataas": 15,
-    "dog_ceo": 10
+    "random_duck": 8,
+    "cataas": 7,
+    "dog_ceo": 5
   },
-  "unsplash_queries": ["crab", "abstract", "nature", "fog", "potato", "chair", "bird", "cloud", "stairs"]
+  "image_queries": ["crab", "abstract", "nature", "fog", "potato", "chair", "bird", "cloud", "stairs"]
 }

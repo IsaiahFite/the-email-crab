@@ -1,11 +1,39 @@
+import os
 import random
 import requests
 from typing import Callable
 
 
 def fetch_unsplash(query: str = "crab") -> bytes | None:
-    """Fetch random image from Unsplash."""
-    url = f"https://source.unsplash.com/random/800x600?{query}"
+    """Fetch random image from the Unsplash API.
+
+    Needs UNSPLASH_ACCESS_KEY. Returns None without one so the caller's
+    fallback chain moves on to another source rather than failing the send.
+    """
+    access_key = os.environ.get("UNSPLASH_ACCESS_KEY")
+    if not access_key:
+        return None
+    try:
+        resp = requests.get(
+            "https://api.unsplash.com/photos/random",
+            params={"query": query, "orientation": "landscape"},
+            headers={"Authorization": f"Client-ID {access_key}"},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        image_url = resp.json()["urls"]["regular"]
+        if image_url:
+            return _fetch_image(image_url)
+    except (requests.RequestException, KeyError, ValueError):
+        pass
+    return None
+
+
+def fetch_loremflickr(query: str = "crab") -> bytes | None:
+    """Fetch random keyword-matched image from LoremFlickr."""
+    # random= busts the CDN cache; without it a keyword tends to repeat.
+    seed = random.randint(1, 10000)
+    url = f"https://loremflickr.com/800/600/{query}?random={seed}"
     return _fetch_image(url)
 
 
@@ -70,26 +98,30 @@ def _fetch_image(url: str, max_retries: int = 2) -> bytes | None:
 
 def get_random_image(
     sources: dict[str, int],
-    unsplash_queries: list[str] | None = None,
+    image_queries: list[str] | None = None,
 ) -> bytes | None:
     """Get a random image based on weighted source selection.
 
     Args:
         sources: Dict of source_name -> weight
-        unsplash_queries: List of queries for Unsplash
+        image_queries: Keywords for the query-capable sources
+            (unsplash, loremflickr)
 
     Returns:
         Image bytes or None if all sources fail
     """
-    if unsplash_queries is None:
-        unsplash_queries = ["crab", "abstract", "nature"]
+    if image_queries is None:
+        image_queries = ["crab", "abstract", "nature"]
 
     # Build weighted list
     weighted_sources: list[tuple[str, Callable[[], bytes | None]]] = []
     for source, weight in sources.items():
         if source == "unsplash":
-            query = random.choice(unsplash_queries)
+            query = random.choice(image_queries)
             fetcher = lambda q=query: fetch_unsplash(q)
+        elif source == "loremflickr":
+            query = random.choice(image_queries)
+            fetcher = lambda q=query: fetch_loremflickr(q)
         elif source == "picsum":
             fetcher = fetch_picsum
         elif source == "random_duck":
