@@ -21,6 +21,10 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 OPENER_WARN_SHARE = 0.15
 QUESTION_WARN_SHARE = 0.10
 
+# The generator asks for 24 seed subjects at 2+ uses each. Warn a little under
+# that so one or two the model couldn't place naturally isn't a red flag.
+SEED_WARN_COUNT = 20
+
 # Questions and second-person are exact string tests. Imperatives are not
 # decidable without part-of-speech tagging, so they are approximated and
 # labelled as such; sentence fragments are not reported at all.
@@ -110,6 +114,35 @@ def report_phrases() -> None:
 
     if questions / total < QUESTION_WARN_SHARE:
         print("  WARN: very few questions, batch is likely all declarative")
+
+    report_seed_usage(phrases)
+
+
+def report_seed_usage(phrases: list[str]) -> None:
+    """How many seed subjects actually made it into the batch.
+
+    Scans the whole pool rather than the run's sample: which nouns were drawn
+    is only in the generator's log, not in any file this can read. A count of
+    seeds present is a good enough health signal without that coupling.
+    """
+    seeds = load_lines("seed_nouns.txt")
+    if not seeds:
+        return
+
+    text = "\n".join(phrases).lower()
+    used = {
+        seed: len(re.findall(rf"\b{re.escape(seed.lower())}s?\b", text))
+        for seed in seeds
+    }
+    present = [s for s, n in used.items() if n]
+    twice = [s for s, n in used.items() if n >= 2]
+
+    print(f"  seed subjects: {len(present)} present, {len(twice)} used 2+ times")
+    if len(twice) < SEED_WARN_COUNT:
+        print(
+            f"  WARN: under {SEED_WARN_COUNT} seeds used twice, "
+            "the subject quota may be getting ignored"
+        )
 
 
 def report_emails() -> None:

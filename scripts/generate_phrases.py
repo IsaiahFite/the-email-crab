@@ -298,7 +298,8 @@ def generate(client: anthropic.Anthropic, prompt: str, max_tokens: int) -> str:
 
     blocks = collections.Counter(b.type for b in response.content)
     print(
-        f"  {response.usage.output_tokens} output tokens, "
+        f"  {response.usage.input_tokens} in / "
+        f"{response.usage.output_tokens} out tokens, "
         f"blocks: {dict(blocks)}, stop_reason: {response.stop_reason}"
     )
     if response.stop_reason == "max_tokens":
@@ -329,11 +330,16 @@ def main() -> int:
     if banned:
         print(f"Banning openers: {', '.join(banned)}")
 
-    print("Generating phrases...")
+    print(f"Generating phrases (model={MODEL}, effort={EFFORT})...")
+    phrase_seeds = random.sample(seed_pool, PHRASE_SEED_COUNT)
+    # Logged because the seeds are the run's main randomness source: without
+    # them in the log there is no way to tell afterwards whether a bland batch
+    # got bland subjects or ignored good ones.
+    print(f"  seeds: {', '.join(phrase_seeds)}")
     phrases = generate(
         client,
         build_phrases_prompt(
-            seeds=random.sample(seed_pool, PHRASE_SEED_COUNT),
+            seeds=phrase_seeds,
             examples=pick_examples(EXAMPLES_PER_RUN, banned),
             banned=banned,
             existing=existing_phrases,
@@ -350,12 +356,11 @@ def main() -> int:
     print(f"Wrote {len(phrases.splitlines())} phrases to {phrases_path}")
 
     print("Generating long emails...")
+    email_seeds = random.sample(seed_pool, EMAIL_SEED_COUNT)
+    print(f"  seeds: {', '.join(email_seeds)}")
     long_emails = generate(
         client,
-        build_emails_prompt(
-            seeds=random.sample(seed_pool, EMAIL_SEED_COUNT),
-            existing=existing_emails,
-        ),
+        build_emails_prompt(seeds=email_seeds, existing=existing_emails),
         EMAIL_MAX_TOKENS,
     )
     if not long_emails:
