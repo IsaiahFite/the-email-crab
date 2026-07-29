@@ -6,8 +6,8 @@
     "long_email": 35
   },
   "image_sources": {
-    "unsplash": 30,
-    "loremflickr": 30,
+    "unsplash": 0,
+    "loremflickr": 60,
     "picsum": 20,
     "random_duck": 8,
     "cataas": 7,

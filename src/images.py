@@ -9,6 +9,11 @@ def fetch_unsplash(query: str = "crab") -> bytes | None:
 
     Needs UNSPLASH_ACCESS_KEY. Returns None without one so the caller's
     fallback chain moves on to another source rather than failing the send.
+
+    Carries weight 0 in config.json while the API key application is
+    pending, so its share is routed to loremflickr instead. Give it a
+    non-zero weight once the key is in the repo secrets; nothing here
+    needs to change.
     """
     access_key = os.environ.get("UNSPLASH_ACCESS_KEY")
     if not access_key:
