@@ -21,11 +21,18 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 
 MODEL = "claude-opus-5"
 
-# Thinking is on by default on current models and is billed against max_tokens
-# alongside the response text, so these leave room for a reasoning pass on top
-# of the output. Headroom that goes unused is not charged.
-PHRASE_MAX_TOKENS = 8000
-EMAIL_MAX_TOKENS = 10000
+# Thinking is on by default and is billed against max_tokens alongside the
+# response text. At the default "high" effort this task spent an entire 8000
+# token budget thinking and emitted no text at all, so effort is pinned down:
+# writing absurdist one-liners is not a reasoning problem, and the only real
+# bookkeeping is honoring the form quotas and seed coverage. Do not raise this
+# to "high" without also raising max_tokens well past the values below.
+EFFORT = "medium"
+
+# Text alone is ~1200 tokens of phrases and ~2300 of emails; the rest is
+# headroom for the reasoning pass. Unused headroom is not charged.
+PHRASE_MAX_TOKENS = 12000
+EMAIL_MAX_TOKENS = 16000
 
 PHRASE_SEED_COUNT = 24
 EMAIL_SEED_COUNT = 20
@@ -285,10 +292,20 @@ def generate(client: anthropic.Anthropic, prompt: str, max_tokens: int) -> str:
     response = client.messages.create(
         model=MODEL,
         max_tokens=max_tokens,
+        output_config={"effort": EFFORT},
         messages=[{"role": "user", "content": prompt}],
     )
+
+    blocks = collections.Counter(b.type for b in response.content)
+    print(
+        f"  {response.usage.output_tokens} output tokens, "
+        f"blocks: {dict(blocks)}, stop_reason: {response.stop_reason}"
+    )
     if response.stop_reason == "max_tokens":
-        print(f"WARNING: hit max_tokens ({max_tokens}), output may be cut off")
+        print(f"  WARNING: hit max_tokens ({max_tokens}), output may be cut off")
+    if not blocks.get("text"):
+        print("  WARNING: no text block returned; budget likely spent thinking")
+
     parts = [b.text for b in response.content if b.type == "text"]
     return "\n".join(parts).strip()
 
