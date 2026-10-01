@@ -1,100 +1,199 @@
-Hang the raincoat where it can see the door.
-What does the vending machine do after closing?
-Has the dandelion been informed?
-Why is the curtain rod longer than the room?
-Does the stud finder ever find anything else?
-Who authorized the toothbrush to hum?
-Is the revolving rack turning, or is the store?
-How many dryer sheets constitute a season?
-Would a razor agree to arbitration?
-Which screwdriver was present at the argument?
-What floor of the parking garage is honest?
-Can a picture frame hold weather?
-Does the pepper grinder work in other rooms?
-Why does the lotion smell like an apology?
-When did the revolving door start counting?
-Is tap water older than the building?
-Should the monitor stand be paid for its labor?
-What is the compost bin composting now?
-Did the light switch ask for consent?
-How does toast decide?
-Where does the sock go, and does it write?
-Apologize to the umbrella stand before leaving.
-Drive under the overpass twice for luck.
-Do not use the emergency exit for ordinary sadness.
-Shake the vending machine gently; it is dreaming.
-Bury the toothbrush with honors.
-Ask the dandelion for directions.
-Measure the curtain rod against your intentions.
-Set the razor down and admit something.
-Return the screwdriver to a different drawer.
-Salt the parking garage before the fog arrives.
-Photograph the empty picture frame quarterly.
-Wind the pepper grinder counterclockwise and wait.
-Leave a light switch on for the house's sake.
-Feed the compost bin something ceremonial.
-A raincoat with nowhere to be.
-Two dandelions and a municipal warning.
-The stud finder, blinking at nothing.
-Dryer sheets in the shape of last winter.
-Tap water in a borrowed glass, no host.
-An overpass with a view of another overpass.
-Emergency exit, propped open, unattended since March.
-One sock, formally missing.
-Lotion older than the marriage.
-A monitor stand supporting nothing but posture.
-You were the last person to trust the revolving door.
-Your toast came out different and you said nothing.
-You have never once looked behind the umbrella stand.
-The vending machine has your order memorized, you know.
-You keep a screwdriver for a screw that never existed.
-Your raincoat has been dry for eleven years.
-You misfiled the light switch under decisions.
-The dandelion outside your window is taking notes on you.
-You are being escorted, slowly, by a revolving rack.
-Your toothbrush has opinions about your mornings.
-You owe the parking garage a better reason.
-Nobody warned you the emergency exit leads inward.
-Your compost bin is composing something.
-You sleep beneath an overpass in one of your dreams.
-Your picture frame prefers the wall it used to hang on.
-The overpass hums a note only pigeons endorse.
-Every vending machine contains one item never for sale.
-Dandelions file their reports through the wind.
-A curtain rod remembers every curtain it has carried.
-Stud finders lie politely to spare the wall.
-The razor and the mirror have an arrangement.
-Screwdrivers migrate toward houses with more doubt.
-Parking garages are cathedrals with the ceilings lowered.
-Toast is the only breakfast that arrives with a verdict.
-Socks defect quietly and are never extradited.
-Lotion is weather applied by hand.
-Tap water tastes faintly of the previous tenant.
-The compost bin is negotiating with the garden.
-Light switches were installed by people who no longer live here.
-An umbrella stand is a waiting room for storms.
-Emergency exits open onto rumors of outside.
-Monitor stands are pedestals for very small monuments.
-Picture frames outlast the faces they were purchased for.
-Dryer sheets smell like a month that never happened.
-Revolving doors sort visitors by conviction.
-Somewhere a raincoat is standing perfectly still in the sun.
-The pepper grinder was a gift from someone unresolved.
-Toothbrushes stand in formation and report nothing.
-Revolving racks are how department stores breathe.
-The stairwell keeps a slightly different temperature than the truth.
-Ceiling fans measure time in reluctant revolutions.
-A hallway lit by one bulb qualifies as a country.
-Every basement is an earlier draft of the house.
-Elevators pause for reasons they decline to publish.
-The mailbox has been empty on purpose since spring.
-Refrigerators hum the anthem of a country with no flag.
-Screwdriver handles hold the fingerprints of three generations.
-Gravel driveways announce arrivals nobody requested.
-The dandelion is the only flower with a legal team.
-A stepladder is a decision with three steps.
-Windowsills collect the belongings of no one.
-The thermostat and the calendar disagree in private.
-Every parking garage has a level that resists being remembered.
-Bath mats retain the shapes of hesitations.
-Fluorescent lights rehearse before anyone arrives.
+The sparrow has a position on the matter and will not share it.
+
+Was the agenda written before anyone agreed to exist?
+
+Apologize to the birdbath for the drought.
+
+You have never thanked the fire escape.
+
+An umbrella stand on a cloudless Thursday, fully loaded.
+
+Every agenda ends with an item nobody wrote.
+
+Who keeps rescheduling the sparrow?
+
+Carry the snow shovel into the meeting and say nothing.
+
+Your umbrella stand knows which storms you avoided.
+
+One sparrow, uninvited, already on the agenda.
+
+The trellis is a ladder for things that refuse to hurry.
+
+Why does the snow shovel look so certain in June?
+
+Sign the waiver using someone else's posture.
+
+A sparrow has been reviewing your agenda for weeks.
+
+Snow shovel propped against a rented summer.
+
+Razors remember the first morning and nothing afterward.
+
+Does the birdbath know which birds come back?
+
+Feed the suggestion box something it cannot digest.
+
+You bought a snow shovel in a city without winter.
+
+Three copies of the waiver, none of them signed.
+
+Paperclips are the smallest available unit of optimism.
+
+Which paragraph of the waiver mentions the fog?
+
+Untangle the charger only after dark.
+
+Your name is on the waiver twice and in the margin once.
+
+Dustpan, broom, and an unfinished argument.
+
+Comment cards are collected by a man with a wheelbarrow.
+
+Where does the suggestion box take its findings at night?
+
+Hold the dustpan like evidence.
+
+You are the only person who writes in the suggestion box.
+
+An instruction manual for a device never manufactured.
+
+Index cards are the shortest surviving form of government.
+
+How long has the tangled charger been like this?
+
+Shout into the stairwell and apologize to the echo.
+
+The tangled charger is a diagram of your year.
+
+A single mitten on a fence post, publicly.
+
+A ceiling fan is a slow argument with the ceiling.
+
+Was the dustpan always this involved?
+
+Read the instruction manual aloud to the trellis.
+
+You sweep toward yourself and the dustpan has noticed.
+
+Birdbath in the fog, attendance low.
+
+Rubber ducks are the last witnesses in most houses.
+
+Can an echo be charged twice for the same remark?
+
+Keep every receipt from a year that went well.
+
+The trellis is waiting for you to grow something.
+
+A ceiling fan, off, mid-thought.
+
+Parking garages collect weather that nobody claimed.
+
+Who proofread the instruction manual, and were they well?
+
+Bury one mitten and let the other decide.
+
+You keep receipts the way other people keep alibis.
+
+Receipts in a coat pocket from another decade.
+
+The birdbath is where the neighborhood files complaints.
+
+What is the trellis preparing for?
+
+Hide the razor from the calendar.
+
+The hamster has outlasted three of your convictions.
+
+Snow shovels are hired seasonally and never thanked.
+
+Why do receipts outlive the groceries?
+
+Consult the hamster before signing anything.
+
+Your hall pass expired during a sentence you never finished.
+
+Hall passes are the only documents issued in good faith.
+
+Does the left mitten know what happened in March?
+
+Request a hall pass for the remainder of the decade.
+
+The ceiling fan has been describing you to the lamp.
+
+Hamsters run a distance that is eventually owed back to them.
+
+Who taught the razor to wait like that?
+
+Straighten a paperclip and confess its purpose.
+
+You left a rubber duck in charge of the basement.
+
+The umbrella stand holds four umbrellas and one grudge.
+
+Is the hamster aware of the fiscal year?
+
+Leave the comment card blank; they will understand.
+
+The parking garage remembers your car better than you do.
+
+Fire escapes are ladders the building keeps for itself.
+
+What does a hall pass permit after the building closes?
+
+An echo is a sentence looking for its author.
+
+Can a paperclip be trusted with a long document?
+
+Instruction manuals describe a slightly different object.
+
+Did anyone collect the comment card from the boiler room?
+
+Receipts are short biographies printed in vanishing ink.
+
+Where did that index card learn to speak like that?
+
+Mittens are issued in pairs to keep the count honest.
+
+Is the rubber duck still under oath?
+
+Dustpans witness the end of everything and say nothing.
+
+The suggestion box was installed facing the wall.
+
+Waivers are poems about everything that could go wrong.
+
+The tangled charger took three years to arrange itself.
+
+Somewhere a sparrow is holding a seat for someone late.
+
+The elevator and the fire escape no longer speak.
+
+Every hall closet contains one object from a prior family.
+
+Clocks in waiting rooms run on borrowed patience.
+
+The fog downtown is a committee that reached consensus.
+
+Pigeons received the city in a settlement.
+
+Most doorbells are rung by weather.
+
+Potted plants keep calendars that no one audits.
+
+The last bus follows a route that was never approved.
+
+A library is a parking garage for sentences.
+
+Rain arrives on behalf of someone who could not attend.
+
+Every town has a bench that hears too much.
+
+The recycling bin has been promoted beyond its ability.
+
+Traffic cones are migratory and loyal to nothing.
+
+Hotel mirrors are running slightly behind schedule.
+
+The kettle has been practicing a different note.
